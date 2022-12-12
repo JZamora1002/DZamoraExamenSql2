@@ -1,0 +1,203 @@
+﻿@model ML.Libro
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<div class="container">
+    <h2>Form</h2>
+    <div class="row gx-5 justify-content-center">
+
+        <div class="col-md-12">
+
+            @using (Html.BeginForm("Form", "Libro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-horizontal container">
+
+                    <div class="form-group row ">
+                        <div class="col-md-3" hidden>
+                            @Html.LabelFor(model => model.IdLibro, new { @class = "hidden" })
+                            @Html.TextBoxFor(model => model.IdLibro, new { @class = "hidden form-control" })
+                            @Html.ValidationMessageFor(model => model.IdLibro)
+
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Nombre)
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre", @onkeypress = "return SoloLetras(event,'error')" })
+
+
+                                @Html.ValidationMessageFor(model => model.Nombre)
+                            </div>
+                            <label class="form-check-label" id="error"></label>
+                        </div>
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Autor.IdAutor)
+                            <div class="input-group mb-3">
+
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+                                @Html.DropDownListFor(model => model.Autor.IdAutor, new SelectList(Model.Autor.Autores, "IdAutor", "Nombre"), "Selecciona una opción", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Autor.IdAutor)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.NumeroPaginas)
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+                                @Html.TextBoxFor(model => model.NumeroPaginas, new { @class = "form-control", @id = "txtNumeroPaginas", @onkeypress = "return SoloNumeros(event,'error2')" })
+                                @Html.ValidationMessageFor(model => model.NumeroPaginas)
+                            </div>
+                            <label class="form-check-label" id="error2"></label>
+
+                        </div>
+
+
+
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.FechaPublicacion)
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+
+                                @Html.TextBoxFor(model => model.FechaPublicacion, new { @class = "form-control", @id = "txtFechaPublicacion" })
+                                @Html.ValidationMessageFor(model => model.FechaPublicacion)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Editorial.IdEditorial)
+                            <div class="input-group mb-3">
+
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+                                @Html.DropDownListFor(model => model.Editorial.IdEditorial, new SelectList(Model.Editorial.Editoriales, "IdEditorial", "Nombre"), "Selecciona una opción", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Editorial.IdEditorial)
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Edicion)
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+
+                                @Html.TextBoxFor(model => model.Edicion, new { @class = "form-control", @id = "txtEdicion" })
+                                @Html.ValidationMessageFor(model => model.Edicion)
+                            </div>
+                            <label class="form-check-label" id="error9"></label>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Genero.IdGenero)
+                            <div class="input-group mb-3">
+
+                                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+
+                                @Html.DropDownListFor(model => model.Genero.IdGenero, new SelectList(Model.Genero.Generos, "IdGenero", "Nombre"), "Selecciona una opción", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Genero.IdGenero)
+                            </div>
+                        </div>
+                        </div>
+
+
+
+
+                        <div class="form-group container row">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <input type="submit" value="Guardar" class="btn btn-success" />
+                                    @Html.ActionLink("Regresar", "GetAll", "Libro", htmlAttributes: new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    }
+
+                </div>
+    </div>
+ </div>
+
+    
+
+
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script type="text/javascript">
+
+    
+
+        $(function () 
+        {
+            $("#txtFechaPublicacion").datepicker
+            ({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                yearRange: '1940:2004',
+                changeYear: true
+            });
+        });
+
+        function SoloNumeros(e, controlId) 
+        {
+            var caracter = e.key;
+            if (!/^[0-9]/g.test(caracter)) 
+            {
+                $('#' + controlId).html("Solo se aceptan numeros");
+                $('#' + controlId).css({ "color": "red" });
+                return false;
+            }
+            else 
+            {
+                $('#' + controlId).text("");
+                return true;
+            }
+        }
+
+        function SoloLetras(e, controlId) 
+        {
+            var caracter = e.key;
+            if (!/^[a-zA-Z ]/g.test(caracter)) {
+                $('#' + controlId).html("Solo se aceptan letras");
+                $('#' + controlId).css({ "color": "red" });
+                return false;
+            }
+            else {
+                $('#' + controlId).text("");
+                return true;
+            }
+        }
+
+        
+
+        
+
+</script>
+}

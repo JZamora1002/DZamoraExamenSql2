@@ -1,0 +1,64 @@
+﻿@model ML.Libro
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>GetAll</h2>
+    <p></p>
+
+    <div class="row">
+        <div style="float:right">
+            @Html.ActionLink("+", "Form", "Libro", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+    </div>
+    <hr />
+    <hr />
+    <div class="row">
+        <table class="table table-dark table-hover table-striped table-bordered table-responsive">
+            <thead class="thead thead-inverse">
+                <tr class="table table-secondary">
+
+                    <th> EDITAR </th>
+                    <th class="hidden">ID</th>
+                    <th align="center">NOMBRE</th>
+                    <th align="center">AUTOR</th>
+                    <th align="center">NUMERO DE PAGINAS</th>
+                    <th align="center">FECHA DE PUBLICACION</th>
+                    <th align="center">EDITORIAL</th>
+                    <th align="center">EDICION</th>
+                    <th align="center">GENERO</th>
+                    
+                    <th> ELIMINAR </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (ML.Libro libro in Model.Libros)
+                {
+
+                    <tr>
+                        <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Libro", new { IdLibro = libro.IdLibro})"></a></td>
+
+                        <td class="hidden">@libro.IdLibro</td>
+                        <td align="center">@libro.Nombre</td>
+                        <td align="center">@libro.Autor.Nombre</td>
+                        <td align="center">@libro.NumeroPaginas</td>
+                        <td align="center">@libro.FechaPublicacion</td>
+                        <td align="center">@libro.Editorial.Nombre</td>
+                        <td align="center">@libro.Edicion</td>
+                        <td align="center">@libro.Genero.Nombre</td>
+                        
+                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Libro", new { IdLibro = libro.IdLibro })" onclick="return confirm('¿Estas seguro que deseas eliminar este libro?');" type="submit"></a></td>
+
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

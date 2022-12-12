@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7164a15660ad4fccb8a10244f71d3e0e" Name="Diagram1">
+        <EntityTypeShape EntityType="DZamoraExamenCrudSqlClientModel.Autor" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DZamoraExamenCrudSqlClientModel.Editorial" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DZamoraExamenCrudSqlClientModel.Genero" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DZamoraExamenCrudSqlClientModel.Libro" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DZamoraExamenCrudSqlClientModel.FK__Libro__IdAutor__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="DZamoraExamenCrudSqlClientModel.FK__Libro__IdEditori__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="DZamoraExamenCrudSqlClientModel.FK__Libro__IdGenero__2C3393D0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
